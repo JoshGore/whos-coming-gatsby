@@ -32,19 +32,29 @@ const spreadsheetDataToCountryData = (
   data: ISpreadsheetData
 ): ICountryData[] => {
   var nodes = data.allGoogleSpreadsheetGatsbyGatsby.nodes;
-  var countries = [...new Set(nodes.map((node) => node.country))].filter(
-    (node) => node != null
-  ).sort().reverse();
-  console.log(countries);
+  var countries = [
+    ...new Set(
+      nodes
+        .filter((node) => node !== null && node.country !== null)
+        .map((node) => node.country.trim())
+    ),
+  ]
+    .sort()
+    .reverse();
   var countryData: ICountryData[] = countries.map((country) => {
-    var countryAttendees = nodes.filter((node) => node.country == country);
+    var countryAttendees = nodes.filter(
+      (node) => node.country.trim() == country.trim()
+    );
     var ecclesias = [
-      ...new Set(countryAttendees.map((attendee) => attendee.homeEcclesia)),
+      ...new Set(
+        countryAttendees
+          .filter((node) => node !== null && node.homeEcclesia !== null)
+          .map((node) => node.homeEcclesia.trim())
+      ),
     ].sort();
-    console.log({ country, ecclesias });
     var ecclesiaData: IEcclesiaData[] = ecclesias.map((ecclesia) => {
       var ecclesiaAttendees = countryAttendees.filter(
-        (node) => node.homeEcclesia == ecclesia
+        (node) => node.homeEcclesia.trim() == ecclesia.trim()
       );
       return {
         ecclesiaName: ecclesia,
