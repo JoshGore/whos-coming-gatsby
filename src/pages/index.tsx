@@ -9,6 +9,7 @@ interface ISpreadsheetData {
       lastName: string;
       country: string;
       homeEcclesia: string;
+      displayOptions: string | null;
     }[];
   };
 }
@@ -16,6 +17,7 @@ interface ISpreadsheetData {
 interface INameData {
   firstName: string;
   lastName: string;
+  displayOptions: string | null;
 }
 
 interface IEcclesiaData {
@@ -69,8 +71,19 @@ const spreadsheetDataToCountryData = (
   return countryData;
 };
 
-const NameEntry: React.FC<INameData> = ({ firstName, lastName }) => {
-  return (
+const NameEntry: React.FC<INameData> = ({
+  firstName,
+  lastName,
+  displayOptions,
+}) => {
+  return displayOptions !== null && displayOptions.toLowerCase() == "first" ? (
+    <p>
+      <b>
+        {firstName} {lastName}
+      </b>{" "}
+      - First book-in!
+    </p>
+  ) : (
     <p>
       {firstName} {lastName}
     </p>
@@ -132,6 +145,7 @@ export const query = graphql`
         firstName
         homeEcclesia
         lastName
+        displayOptions
       }
     }
   }
