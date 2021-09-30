@@ -1,0 +1,27 @@
+{
+  "name": "whos-coming-to-nzyc-2022",
+  "version": "1.0.0",
+  "private": true,
+  "description": "whos coming to nzyc 2022",
+  "author": "Joshua Gore",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "bootstrap": "5.1.0",
+    "gatsby": "^3.13.1",
+    "gatsby-source-google-sheets": "^1.1.1",
+    "gatsby-source-google-spreadsheet": "^2.0.0",
+    "gatsby-source-google-spreadsheets": "^3.0.8",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}
