@@ -118,19 +118,16 @@ const CountryEntry: React.FC<ICountryData> = ({ countryName, ecclesias }) => {
 const IndexPage = ({ data }: { data: ISpreadsheetData }) => {
   return (
     <main
-      className="container-fluid"
-      style={{ backgroundColor: "#32442f", color: "whitesmoke" }}
+      style={{
+        backgroundColor: "#32442f",
+        color: "whitesmoke",
+        width: "100%",
+        textAlign: "center",
+      }}
     >
-      <div className="row">
-        <div
-          className="col-sm-6 offset-sm-3 main"
-          style={{ textAlign: "center" }}
-        >
-          {spreadsheetDataToCountryData(data).map((country) => (
-            <CountryEntry {...country} />
-          ))}
-        </div>
-      </div>
+      {spreadsheetDataToCountryData(data).map((country) => (
+        <CountryEntry {...country} />
+      ))}
     </main>
   );
 };
