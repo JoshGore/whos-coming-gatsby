@@ -117,8 +117,11 @@ const CountryEntry: React.FC<ICountryData> = ({ countryName, ecclesias }) => {
 
 const IndexPage = ({ data }: { data: ISpreadsheetData }) => {
   React.useEffect(() => {
-    var height = document.getElementsByTagName("html")[0].scrollHeight;
-    window.parent.postMessage(["setHeight", height], "*");
+    const resize = () => {
+      var height = document.getElementsByTagName("html")[0].scrollHeight;
+      window.parent.postMessage(["setHeight", height], "*");
+    }
+    setInterval(resize, 1000);
   });
   return (
     <main
