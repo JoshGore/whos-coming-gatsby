@@ -116,6 +116,10 @@ const CountryEntry: React.FC<ICountryData> = ({ countryName, ecclesias }) => {
 };
 
 const IndexPage = ({ data }: { data: ISpreadsheetData }) => {
+  React.useEffect(() => {
+    var height = document.getElementsByTagName("html")[0].scrollHeight;
+    window.parent.postMessage(["setHeight", height], "*");
+  });
   return (
     <main
       className="container-fluid"
@@ -127,10 +131,7 @@ const IndexPage = ({ data }: { data: ISpreadsheetData }) => {
       }}
     >
       <div className="row">
-        <div
-          className="col-12"
-          style={{ textAlign: "center" }}
-        >
+        <div className="col-12" style={{ textAlign: "center" }}>
           {spreadsheetDataToCountryData(data).map((country) => (
             <CountryEntry {...country} />
           ))}
