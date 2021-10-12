@@ -95,8 +95,8 @@ const EcclesiaEntry: React.FC<IEcclesiaData> = ({
   attendees,
 }) => {
   return (
-    <div style={{marginBottom: "10px"}}>
-      <h5><u>{ecclesiaName}</u></h5>
+    <div style={{marginBottom: "20px"}}>
+      <h3><u>{ecclesiaName}</u></h3>
       {attendees.map((attendee) => (
         <NameEntry {...attendee} />
       ))}
@@ -107,7 +107,7 @@ const EcclesiaEntry: React.FC<IEcclesiaData> = ({
 const CountryEntry: React.FC<ICountryData> = ({ countryName, ecclesias }) => {
   return (
     <div>
-      <h4>{countryName}</h4>
+      <h2 style={{marginTop: '20px', marginBottom: '20px'}}>{countryName}</h2>
       {ecclesias.map((ecclesia) => (
         <EcclesiaEntry {...ecclesia} />
       ))}
